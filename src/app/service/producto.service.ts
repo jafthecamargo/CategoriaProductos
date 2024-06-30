@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class ProductoService {
 
-  private endPoint: string = 'http://localhost:8080/apiProducto/productos';
+  private endPoint: string = 'https://apiinventariomini.onrender.com/apiProducto/productos';
   private httpheaders = new HttpHeaders(
     {'Content-Type': 'application/json'}
   )
