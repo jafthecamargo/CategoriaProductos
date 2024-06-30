@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CategoriaService {
-  private endPoint: string = 'http://localhost:8080/apiCategorias/categorias';
+  private endPoint: string = 'https://apiinventariomini.onrender.com/api/categorias';
   private httpheaders = new HttpHeaders(
     {'Content-Type': 'application/json'}
   )
