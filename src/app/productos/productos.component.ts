@@ -1,31 +1,31 @@
 import {Component, OnInit} from '@angular/core';
-import { Categoria } from '../model/Categoria';
 import { CommonModule } from '@angular/common';
 import Swal from 'sweetalert2';
-import {CategoriaService} from "../service/categoria.service";
 import {RouterLink} from "@angular/router";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {Producto} from "../model/Producto";
+import {ProductoService} from "../service/producto.service";
 
 @Component({
-  selector: 'app-categorias',
+  selector: 'app-productos',
   standalone: true,
   imports: [CommonModule, HttpClientModule, RouterLink],
-  templateUrl: './categorias.component.html',
-  styleUrl: './categorias.component.css'
+  templateUrl: './productos.component.html',
+  styleUrl: './productos.component.css'
 })
-export class CategoriasComponent implements OnInit {
-  titulo: string = 'Categorias';
-  listadoDeCategorias: Categoria[] = []
+export class ProductosComponent implements OnInit {
+  titulo: string = 'Productos';
+  listadoDeProductos: Producto[] = []
 
-  constructor(private http: HttpClient, private categoriaService: CategoriaService) { }
+  constructor(private http: HttpClient, private productoService: ProductoService) { }
 
   ngOnInit(): void {
-    this.categoriaService
-      .mostrarCategorias(this.http)
-      .subscribe((lasCategorias) => this.listadoDeCategorias = lasCategorias);
+    this.productoService
+      .mostrarProductos(this.http)
+      .subscribe((losProductos) => this.listadoDeProductos = losProductos);
   }
 
-  delete(categoria: Categoria): void {
+  delete(producto: Producto): void {
     Swal.fire({
       title: "¿Estás seguro?",
       text: "¡No podrás revertir esto!",
@@ -36,16 +36,16 @@ export class CategoriasComponent implements OnInit {
       confirmButtonText: "¡Sí, bórralo!"
     }).then((result) => {
       if (result.isConfirmed) {
-        this.categoriaService.eliminarCategoria(this.http, categoria.idCategoria)
+        this.productoService.eliminarProducto(this.http, producto.idProducto)
           .subscribe(
             (response) => {
-              this.categoriaService.mostrarCategorias(this.http)
+              this.productoService.mostrarProductos(this.http)
                 .subscribe(
-                  (lasCategorias) => {
-                    this.listadoDeCategorias = lasCategorias;
+                  (losProductos) => {
+                    this.listadoDeProductos = losProductos;
                     Swal.fire({
                       title: "¡Eliminado!",
-                      text: "El registro ha sido eliminado satisfactoriamente.",
+                      text: "El producto se ha sido eliminado satisfactoriamente.",
                       icon: "success"
                     });
                   }
@@ -54,7 +54,7 @@ export class CategoriasComponent implements OnInit {
             (error) => {
               Swal.fire({
                 title: "Error",
-                text: `Hubo un error al eliminar la categoría: ${error.message}`,
+                text: `Hubo un error al eliminar el producto: ${error.message}`,
                 icon: "error"
               });
             }

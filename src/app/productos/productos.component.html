@@ -1,0 +1,51 @@
+<div class="mt-3">
+  <div class="container">
+    <div class="card border-primary text-center">
+      <div class="card-header text-primary">
+        <h1 class="card-title text-center text-primary">
+          {{titulo}}
+        </h1>
+      </div>
+    </div>
+    <div class="card-body text-primary border-primary">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>idProducto</th>
+          <th>nombreProducto</th>
+          <th>descripcionProducto</th>
+          <th>existencias</th>
+          <th>precio</th>
+          <th>Categoría</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let c of listadoDeProductos">
+          <td>{{c.idProducto}}</td>
+          <td>{{c.nombreProducto}}</td>
+          <td>{{c.descripcionProducto}}</td>
+          <td>{{c.existencias}}</td>
+          <td>{{c.precio}}</td>
+          <td>{{c.categoria.nombreCategoria}}</td>
+          <td>
+            <button
+              class="btn btn-outline-success btn-sm"
+              type="button"
+              [routerLink]="['/productosForm', c.idProducto]"
+            >Actualizar
+            </button>
+          </td>
+          <td>
+            <button
+              class="btn btn-outline-danger btn-sm"
+              type="button" (click)="delete(c)"
+            >Eliminar
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <button class="btn btn-outline-primary btn-sm" [routerLink]="['/productosForm']">Agregar</button>
+    </div>
+  </div>
+</div>

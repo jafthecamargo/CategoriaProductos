@@ -13,5 +13,5 @@ import { FooterComponent } from './footer/footer.component';
 })
 export class AppComponent {
   titulo = 'CategoriaProductos';
-  nombre : string = 'Cesar Lopez';
+  nombre : string = 'Jafthe Camargo';
 }

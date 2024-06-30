@@ -1,0 +1,49 @@
+<div class="mb-3">
+  <div class="container border-primary text-center">
+    <div class="card text-primary">
+      <div class="card-header text-center">
+        <h1 class="card-title">
+          {{titulo}}
+        </h1>
+      </div>
+    </div>
+    <div class="card-body border-primary">
+      <form>
+        <div class="mb-3">
+          <label for="txtIdProducto" class="form-label">idProducto</label>
+          <input type="text" id="txtIdProducto" name="idProducto" class="form-control" value="5" readonly [(ngModel)]="producto.idProducto"/>
+        </div>
+        <div class="mb-3">
+          <label for="txtnombreProducto" class="form-label">nombreProducto</label>
+          <input type="text" id="txtnombreProducto" name="nombreProducto" class="form-control" [(ngModel)]="producto.nombreProducto"/>
+        </div>
+        <div class="mb-3">
+          <label for="txtdescripcionProducto" class="form-label">descripcionProducto</label>
+          <input type="text" id="txtdescripcionProducto" name="descripcionProducto" class="form-control" [(ngModel)]="producto.descripcionProducto"/>
+        </div>
+        <div class="mb-3">
+          <label for="txtExistencias" class="form-label">Existencias</label>
+          <input type="text" id="txtExistencias" name="Existencias" class="form-control" value="5" [(ngModel)]="producto.existencias"/>
+        </div>
+        <div class="mb-3">
+          <label for="txtPrecio" class="form-label">Precio</label>
+          <input type="text" id="txtPrecio" name="Precio" class="form-control" value="5" [(ngModel)]="producto.precio"/>
+        </div>
+        <div class="mb-3">
+          <label for="txtCategoria" class="form-label">IdCategoría</label>
+          <input type="text" id="txtCategoria" name="Categoria" class="form-control" value="5" [(ngModel)]="producto.categoria.idCategoria"/>
+        </div>
+        <div class="mb-3">
+          <button type="button" class="btn btn-outline-success form-control" *ngIf="producto.idProducto; else elseBlock" (click)="actualizarProducto()">
+            Actualizar
+          </button>
+          <ng-template #elseBlock>
+            <button type="button" class="btn btn-outline-primary form-control" (click)="registrarProducto()">
+              Registrar
+            </button>
+          </ng-template>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

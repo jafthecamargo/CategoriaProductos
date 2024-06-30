@@ -21,12 +21,25 @@
                         <td>{{c.idCategoria}}</td>
                         <td>{{c.nombreCategoria}}</td>
                         <td>{{c.descripcionCategoria}}</td>
-                        <td><button class="btn btn-outline-success btn-sm" type="button" (click)="update()">Actualizar</button></td>
-                        <td><button class="btn btn-outline-danger btn-sm" type="button" (click)="delete()">Eliminar</button></td>
+                        <td>
+                          <button
+                          class="btn btn-outline-success btn-sm"
+                          type="button"
+                          [routerLink]="['/categoriaForm', c.idCategoria]"
+                        >Actualizar
+                          </button>
+                        </td>
+                        <td>
+                          <button
+                            class="btn btn-outline-danger btn-sm"
+                            type="button" (click)="delete(c)"
+                          >Eliminar
+                          </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-            <button class="btn btn-outline-primary btn-sm">Agregar</button>
+            <button class="btn btn-outline-primary btn-sm" [routerLink]="['/categoriaForm']">Agregar</button>
         </div>
     </div>
 </div>
